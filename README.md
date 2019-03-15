@@ -22,7 +22,4 @@
     - Using [dklb](https://github.com/mesosphere/dklb) and  [dashboard-ext-dklb.yaml](dashboard-ext-dklb.yaml) the dashboard will be available at `https://<edgelb ip>/`.
 - [Monitoring](monitoring-edgelb.json) - Exposes Grafana and Prometheus
   - Grafana - `https://<edgelb ip>:3000/`
-  
-
-
 
