@@ -7,7 +7,7 @@
 
 ### Sample Edge-LB Config files for DC/OS services.
 
-- [MJS - Mesosphere Jupyter Service](jupyter-edgelb.json)
+- [MJS - Mesosphere Jupyter Service](jupyterlab-edgelb.json)
 - [Kubernetes](k8s-edgelb.json)
   - This assumes a K8s services named `k8s`.  If you have a service with a different name, update the property `frameworkName` with the name of your service in the Edge-LB config file (line 26).
    ```bash
