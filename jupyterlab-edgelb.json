@@ -1,0 +1,35 @@
+{
+    "apiVersion": "V2",
+    "name": "dcos-lb-jupyter",
+    "count": 1,
+    "haproxy": {
+        "frontends": [
+            {
+                "bindPort": 8888,
+                "protocol": "HTTP",
+                "linkBackend": {
+                    "defaultBackend": "jupyter_notebook"
+                }
+            }
+        ],
+        "backends": [
+            {
+                "name": "jupyter_notebook",
+                "protocol": "HTTP",
+                "services": [
+                    {
+                        "marathon": {
+                            "serviceID": "/jupyterlab-notebook"
+                        },
+                        "endpoint": {
+                            "portName": "notebook"
+                        }
+                    }
+                ]
+            }
+        ],
+        "stats": {
+            "bindPort": 6090
+        }
+    }
+}

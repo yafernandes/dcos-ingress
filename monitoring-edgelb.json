@@ -1,0 +1,94 @@
+{
+    "apiVersion": "V2",
+    "name": "dcos-lb-monitoring",
+    "count": 1,
+    "haproxy": {
+        "frontends": [
+            {
+                "bindPort": 3000,
+                "protocol": "HTTP",
+                "linkBackend": {
+                    "defaultBackend": "grafana"
+                }
+            },
+            {
+                "bindPort": 9090,
+                "protocol": "HTTP",
+                "linkBackend": {
+                    "defaultBackend": "prometheus_server"
+                }
+            },
+            {
+                "bindPort": 9093,
+                "protocol": "HTTP",
+                "linkBackend": {
+                    "defaultBackend": "prometheus_alertmanager"
+                }
+            },
+            {
+                "bindPort": 9091,
+                "protocol": "HTTP",
+                "linkBackend": {
+                    "defaultBackend": "prometheus_pushgateway"
+                }
+            }
+        ],
+        "backends": [
+            {
+                "name": "grafana",
+                "protocol": "HTTP",
+                "services": [
+                    {
+                        "endpoint": {
+                            "TYPE": "ADDRESS",
+                            "address": "grafana.grafana.l4lb.thisdcos.directory",
+                            "port": 3000
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "prometheus_server",
+                "protocol": "HTTP",
+                "services": [
+                    {
+                        "endpoint": {
+                            "TYPE": "ADDRESS",
+                            "address": "prometheus.prometheus.l4lb.thisdcos.directory",
+                            "port": 9090
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "prometheus_alertmanager",
+                "protocol": "HTTP",
+                "services": [
+                    {
+                        "endpoint": {
+                            "TYPE": "ADDRESS",
+                            "address": "alertmanager.prometheus.l4lb.thisdcos.directory",
+                            "port": 9093
+                        }
+                    }
+                ]
+            },
+            {
+                "name": "prometheus_pushgateway",
+                "protocol": "HTTP",
+                "services": [
+                    {
+                        "endpoint": {
+                            "TYPE": "ADDRESS",
+                            "address": "pushgateway.prometheus.l4lb.thisdcos.directory",
+                            "port": 9091
+                        }
+                    }
+                ]
+            }
+        ],
+        "stats": {
+            "bindPort": 6090
+        }
+    }
+}

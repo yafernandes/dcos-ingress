@@ -1,0 +1,40 @@
+{
+    "apiVersion": "V2",
+    "name": "dcos-lb-k8s",
+    "count": 1,
+    "autoCertificate": true,
+    "haproxy": {
+        "frontends": [
+            {
+                "bindPort": 6443,
+                "protocol": "HTTPS",
+                "certificates": [
+                    "$AUTOCERT"
+                ],
+                "linkBackend": {
+                    "defaultBackend": "k8s"
+                }
+            }
+        ],
+        "backends": [
+            {
+                "name": "k8s",
+                "protocol": "HTTPS",
+                "services": [
+                    {
+                        "mesos": {
+                            "frameworkName": "k8s",
+                            "taskNamePattern": "kube-control-plane"
+                        },
+                        "endpoint": {
+                            "portName": "apiserver"
+                        }
+                    }
+                ]
+            }
+        ],
+        "stats": {
+            "bindPort": 6090
+        }
+    }
+}
