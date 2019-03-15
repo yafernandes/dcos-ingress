@@ -5,7 +5,7 @@
 - [EdgeLB Service/Ingress controller for Kubernetes](https://github.com/mesosphere/dklb)
 
 
-Sample Edge-LB Config files for DC/OS services.
+### Sample Edge-LB Config files for DC/OS services.
 
 - [MJS - Mesosphere Jupyter Service](jupyter-edgelb.json)
 - [Kubernetes](k8s-edgelb.json)
