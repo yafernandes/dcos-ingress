@@ -18,7 +18,7 @@
        --apiserver-url=https://<edgelb ip>:6443/
    ```
   - There are two ways of exposing K8s dashboard without the need for `kubectl proxy`.
-    - When you have a public K8s node, you can use nodeports.  Using [dashboard-ext-nodeport.yaml](dashboard-ext-nodeport.yaml) the dashboard will be available at `https://<K8 public node ip>:30443/`.
+    - When you have a public K8s node, you can use nodeports.  Using [dashboard-ext-nodeport.yaml](dashboard-ext-nodeport.yaml) the dashboard will be available at `https://<K8 public node ip>:30443/`.  **Not working with version `2.2.1-1.13.4`**.
     - Using [dklb](https://github.com/mesosphere/dklb) and  [dashboard-ext-dklb.yaml](dashboard-ext-dklb.yaml) the dashboard will be available at `https://<edgelb ip>/`.
 - [Monitoring](monitoring-edgelb.json) - Exposes Grafana and Prometheus
   - Grafana - `https://<edgelb ip>:3000/`
