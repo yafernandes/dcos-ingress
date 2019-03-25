@@ -1,0 +1,39 @@
+{
+    "apiVersion": "V2",
+    "name": "dcos-lb-jenkins",
+    "count": 1,
+    "autoCertificate": true,
+    "haproxy": {
+        "frontends": [
+            {
+                "bindPort": 10443,
+                "protocol": "HTTPS",
+                "certificates": [
+                    "$AUTOCERT"
+                ],
+                "linkBackend": {
+                    "defaultBackend": "jenkins"
+                }
+            }
+        ],
+        "backends": [
+            {
+                "name": "jenkins",
+                "protocol": "HTTP",
+                "services": [
+                    {
+                        "marathon": {
+                            "serviceID": "/jenkins"
+                        },
+                        "endpoint": {
+                            "portName": "nginx"
+                        }
+                    }
+                ]
+            }
+        ],
+        "stats": {
+            "bindPort": 6090
+        }
+    }
+}
