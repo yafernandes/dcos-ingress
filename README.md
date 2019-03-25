@@ -22,6 +22,6 @@
     - Using [dklb](https://github.com/mesosphere/dklb) and  [dashboard-ext-dklb.yaml](dashboard-ext-dklb.yaml) the dashboard will be available at `https://<edgelb ip>/`.
 - [Monitoring](monitoring-edgelb.json) - Exposes Grafana and Prometheus
   - Grafana - `https://<edgelb ip>:3000/`
-- [Jenkins](jenkins-edgelb.json) - Exposes Jenkins usning EdgeLB
-  - Grafana - `https://<edgelb ip>:10443/`
+- [Jenkins](jenkins-edgelb.json) - Exposes Jenkins using EdgeLB
+  - Jenkins - `https://<edgelb ip>:10443/`
 
